@@ -4,13 +4,18 @@
     {
         static void Main(string[] args)
         {
-            string file1 = @"C:\plik1.txt";
-            string file2 = @"C:\plik2.txt";
-            string targetLocation1 = @"D:\plik1.txt";
-            string targetLocation2 = @"D:\plik2.txt";
+            var files = new string[][]
+            {
+                [@"C:\plik1.txt", @"D:\plik1.txt"],
+                [@"C:\plik2.txt", @"D:\plik2.txt"],
+            };
 
-            File.Copy(file1, targetLocation1, true);
-            File.Copy(file2, targetLocation2, true);
+            foreach(var file in files)
+            {
+                var source = file.ElementAt(0);
+                var destination = file.ElementAt(0);
+                File.Copy(source, destination, true);
+            }
 
             Console.WriteLine("Done. Press any key...");
             Console.ReadKey();

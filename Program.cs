@@ -13,8 +13,16 @@
             foreach(var file in files)
             {
                 var source = file.ElementAt(0);
-                var destination = file.ElementAt(0);
-                File.Copy(source, destination, true);
+                var destination = file.ElementAt(1);
+                Console.WriteLine(string.Format("Backuping {0}\nto {1}", source, destination));
+                try
+                {
+                    File.Copy(source, destination, true);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(string.Format("Error backuping {0} !\n{1}", source, ex.Message));
+                }
             }
 
             Console.WriteLine("Done. Press any key...");
